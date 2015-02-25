@@ -18,7 +18,7 @@ Build dependencies
 	# <FIXME???>
 
     # Centos & RHEL
-    $ yum install -y glibc-static 
+    $ yum install -y glibc-static nasm 
 
 Build & "install"
 -----------------
