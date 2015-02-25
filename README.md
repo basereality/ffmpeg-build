@@ -17,10 +17,13 @@ Build dependencies
 	# (apple login needed)
 	# <FIXME???>
 
+    # Centos & RHEL
+    $ yum install -y glibc-static 
+
 Build & "install"
 -----------------
 
-    $ ./build.sh or build-ubuntu.sh
+    $ ./build.sh or build-ubuntu.sh or build-openh264.sh
     # ... wait ...
     # binaries can be found in ./target/bin/
 
