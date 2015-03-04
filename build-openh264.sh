@@ -1,5 +1,7 @@
 #!/bin/sh
 
+. ./function.sh
+
 set -e
 set -u
 
@@ -51,7 +53,7 @@ cd $BUILD_DIR
 ../fetchurl "http://downloads.sourceforge.net/project/lame/lame/3.99/lame-3.99.5.tar.gz"
 ../fetchurl "http://downloads.xiph.org/releases/opus/opus-1.1.tar.gz"
 ../fetchurl "http://ffmpeg.org/releases/ffmpeg-snapshot.tar.bz2"
-git clone https://github.com/cisco/openh264.git
+do_git_checkout "https://github.com/cisco/openh264.git" "openh264" "refs/tags/v1.3"
 
 echo "*** Building yasm ***"
 cd $BUILD_DIR/yasm*
@@ -122,7 +124,6 @@ make install
 
 echo "*** Building openh264 ***"
 cd $BUILD_DIR/openh264*
-git checkout -b v1.3 refs/tags/v1.3
 sed -i -e "s|PREFIX=/usr/local|PREFIX=${TARGET_DIR}|" Makefile
 make -j $jval
 make install
