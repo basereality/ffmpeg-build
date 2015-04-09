@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 . ./function.sh
 
@@ -52,7 +52,7 @@ cd $BUILD_DIR
 ../fetchurl "http://downloads.sourceforge.net/project/opencore-amr/vo-aacenc/vo-aacenc-0.1.3.tar.gz"
 ../fetchurl "http://downloads.sourceforge.net/project/lame/lame/3.99/lame-3.99.5.tar.gz"
 ../fetchurl "http://downloads.xiph.org/releases/opus/opus-1.1.tar.gz"
-../fetchurl "http://ffmpeg.org/releases/ffmpeg-snapshot.tar.bz2"
+../fetchurl "http://ffmpeg.org/releases/ffmpeg-2.6.tar.bz2"
 do_git_checkout "https://github.com/cisco/openh264.git" "openh264" "refs/tags/v1.3"
 
 echo "*** Building yasm ***"
@@ -134,5 +134,5 @@ rm -f "$TARGET_DIR/lib/*.so"
 
 # FFMpeg
 cd $BUILD_DIR/ffmpeg*
-PKG_CONFIG_PATH="${TARGET_DIR}/lib/pkgconfig" ./configure --prefix="${OUTPUT_DIR:-$TARGET_DIR}" --extra-cflags="-I${TARGET_DIR}/include" --extra-ldflags="-L${TARGET_DIR}/lib -lm" --disable-debug --disable-ffplay --disable-ffserver --disable-doc --enable-gpl --enable-pthreads --enable-libvo-aacenc --enable-libmp3lame --enable-libopus --enable-libtheora --enable-libvorbis --enable-libvpx --enable-bzlib --enable-zlib --enable-libopenh264 --enable-version3
+PKG_CONFIG_PATH="${TARGET_DIR}/lib/pkgconfig" ./configure --prefix="${OUTPUT_DIR:-$TARGET_DIR}" --extra-cflags="-I${TARGET_DIR}/include" --extra-ldflags="-L${TARGET_DIR}/lib -lm" --disable-debug --enable-static --extra-cflags=--static --disable-ffplay --disable-ffserver --disable-doc --enable-gpl --enable-pthreads --enable-libvo-aacenc --enable-libmp3lame --enable-libopus --enable-libtheora --enable-libvorbis --enable-libvpx --enable-bzlib --enable-zlib --enable-libopenh264 --enable-version3
 make -j $jval && make install

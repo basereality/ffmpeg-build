@@ -10,7 +10,7 @@ Build dependencies
 ------------------
 
     # Debian & Ubuntu
-    $ apt-get install build-essential curl tar
+    $ apt-get install build-essential curl tar pkg-config nasm git
 
 	# OS X
 	# install XCode, it can be found at http://developer.apple.com/
